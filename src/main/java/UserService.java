@@ -29,4 +29,20 @@ public class UserService {
         else
             System.out.println("something is wrong :|");
     }
+
+    public void signIn() throws SQLException {
+        System.out.println("Please enter your username:");
+        String username = scanner.nextLine();
+
+        System.out.println("Please enter your password");
+        String password = scanner.nextLine();
+
+        User user = userRepository.findByUsername(username);
+        if(user == null)
+            System.out.println("Please register first");
+        else if(!user.getPassword().equals(password))
+            System.out.println("Please enter correct password");
+        else
+        System.out.println("WELCOME " + user.getUsername());
+    }
 }
