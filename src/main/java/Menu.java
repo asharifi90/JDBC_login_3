@@ -21,12 +21,16 @@ public class Menu {
 
         switch (number) {
             case 1 -> signUp();
-            case 2 -> System.out.println("signUp");
+            case 2 -> signIn();
             case 3 -> System.out.println("exit");
         }
     }
 
     public void signUp() throws SQLException {
         userService.singUp();
+    }
+
+    public void signIn() throws SQLException {
+        userService.signIn();
     }
 }
