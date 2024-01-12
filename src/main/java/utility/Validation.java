@@ -1,6 +1,7 @@
 package utility;
 
 import java.util.Arrays;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Validation {
@@ -10,7 +11,12 @@ public class Validation {
         PASSWORD_PATTERN = Pattern.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#!%&*])[A-Za-z0-9@#!%&*]{8,10}$");
     }
 
-    public boolean validateMelliCode(String melliCode) {
+    public static boolean isValidPassword(String password){
+        Matcher matcher = PASSWORD_PATTERN.matcher(password);
+        return matcher.find();
+    }
+
+    public static boolean validateMelliCode(String melliCode) {
 
         String[] identicalDigits = {"0000000000", "1111111111", "2222222222", "3333333333", "4444444444", "5555555555", "6666666666", "7777777777", "8888888888", "9999999999"};
 
