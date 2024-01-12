@@ -11,20 +11,21 @@ public class UserRepository {
 
     private final Connection connection;
 
-    public UserRepository(Connection connection) throws SQLException {
+    public UserRepository(Connection connection) {
         this.connection = connection;
     }
 
     public int registerUser(User user) throws SQLException {
 //        Connection connection = jdbcConnection.getConnection();
 
-        String addUser = "INSERT INTO users(first_name, last_name, username, password) VALUES (?, ?, ?, ?);";
+        String addUser = "INSERT INTO users(first_name, last_name,national_id, username, password) VALUES (?, ?, ?, ?, ?);";
         PreparedStatement preparedStatement = connection.prepareStatement(addUser);
 
         preparedStatement.setString(1, user.getFirstName());
         preparedStatement.setString(2, user.getLastName());
-        preparedStatement.setString(3, user.getUsername());
-        preparedStatement.setString(4, user.getPassword());
+        preparedStatement.setString(3, user.getNationalCode());
+        preparedStatement.setString(4, user.getUsername());
+        preparedStatement.setString(5, user.getPassword());
 
         int result = preparedStatement.executeUpdate();
         return result;
