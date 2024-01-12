@@ -38,8 +38,16 @@ public class UserService {
         System.out.println("Please enter your username:");
         String username = scanner.nextLine();
 
-        System.out.println("Please enter your password:");
-        String password = scanner.nextLine();
+        String password = "";
+        while(true) {
+            System.out.println("Please enter your password:");
+            password = scanner.nextLine();
+            if(Validation.isValidPassword(password)){
+                break;
+            }else{
+                System.out.println("Enter correct password");
+            }
+        }
 
         User user = new User(firstname, lastname, nationalId, username, password);
         int result = userRepository.registerUser(user);
