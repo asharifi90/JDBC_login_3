@@ -1,3 +1,5 @@
+import service.Menu;
+
 import java.sql.SQLException;
 
 public class Main {
