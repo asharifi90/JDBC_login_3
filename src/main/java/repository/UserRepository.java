@@ -1,3 +1,7 @@
+package repository;
+
+import model.User;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -5,13 +9,14 @@ import java.sql.SQLException;
 
 public class UserRepository {
 
-    private final JdbcConnection jdbcConnection = new JdbcConnection();
+    private final Connection connection;
 
-    public UserRepository() throws SQLException {
+    public UserRepository(Connection connection) throws SQLException {
+        this.connection = connection;
     }
 
     public int registerUser(User user) throws SQLException {
-        Connection connection = jdbcConnection.getConnection();
+//        Connection connection = jdbcConnection.getConnection();
 
         String addUser = "INSERT INTO users(first_name, last_name, username, password) VALUES (?, ?, ?, ?);";
         PreparedStatement preparedStatement = connection.prepareStatement(addUser);
@@ -26,7 +31,7 @@ public class UserRepository {
     }
 
     public User findByUsername(String username) throws SQLException {
-        Connection connection = jdbcConnection.getConnection();
+//        Connection connection = jdbcConnection.getConnection();
 
         String findUser = "SELECT * FROM users WHERE username = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(findUser);
