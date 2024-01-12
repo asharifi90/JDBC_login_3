@@ -42,9 +42,10 @@ public class UserRepository {
             int id = resultSet.getInt("id");
             String firstName = resultSet.getString("first_name");
             String lastname = resultSet.getString("last_name");
+            String nationalId = resultSet.getString("national_id");
             String fetchUsername = resultSet.getString("username");
             String password = resultSet.getString("password");
-            User user = new User(id, firstName, lastname, fetchUsername, password);
+            User user = new User(id, firstName, lastname, nationalId, fetchUsername, password);
             return user;
         }
         else
