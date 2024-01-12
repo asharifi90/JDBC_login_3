@@ -1,26 +1,40 @@
+package model;
+
 public class User {
     private int id;
     private String firstName;
     private String lastName;
+    private String nationalCode;
     private String username;
     private String password;
+
 
     public User() {
     }
 
-    public User(int id, String firstName, String lastName, String username, String password) {
+    public User(int id, String firstName, String lastName, String nationalCode, String username, String password) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.nationalCode = nationalCode;
         this.username = username;
         this.password = password;
     }
 
-    public User(String firstName, String lastName, String username, String password) {
+    public User(String firstName, String lastName, String nationalCode, String username, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.nationalCode = nationalCode;
         this.username = username;
         this.password = password;
+    }
+
+    public String getNationalCode() {
+        return nationalCode;
+    }
+
+    public void setNationalCode(String nationalCode) {
+        this.nationalCode = nationalCode;
     }
 
     public int getId() {
@@ -65,7 +79,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "model.User{" +
                "id=" + id +
                ", firstName='" + firstName + '\'' +
                ", lastName='" + lastName + '\'' +
